@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <stdio.h>
+#include <unistd.h>
 
 typedef unsigned long long u64;
 
@@ -52,6 +53,7 @@ int main(void) {
 #endif
   u64 last = perf_counter();
   for (int i = 0; i < 100; i++) {
+    sleep(1);
     u64 this = perf_counter();
     u64 elapsed_nanos = perf_to_nanos(this - last);
     last = this;
